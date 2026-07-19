@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capo School — Learn to Use a Guitar Capo</title>
+<meta name="description" content="A free interactive lesson on how to choose, apply, and use a guitar capo — built for beginner guitarists, with worship-song video examples.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="theme-color" content="#1c130d">
+
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Capo School — Learn to Use a Guitar Capo">
+<meta property="og:description" content="An interactive lesson on choosing, applying, and using a guitar capo — with a live fretboard demo, transposition calculator, and worship-song video examples.">
+<meta property="og:image" content="social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Capo School — Learn to Use a Guitar Capo">
+<meta name="twitter:description" content="An interactive lesson on choosing, applying, and using a guitar capo — with a live fretboard demo, transposition calculator, and worship-song video examples.">
+<meta name="twitter:image" content="social-preview.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+    --ink:#1c130d;
+    --ink-soft:#241a12;
+    --amber-deep:#4a2412;
+    --amber-mid:#8a4a1f;
+    --cream:#f2e8d5;
+    --cream-dim:#cabe9f;
+    --brass:#c9a15a;
+    --capo-red:#c1442e;
+    --capo-red-bright:#e05a3f;
+    --steel:#5a5044;
+    --line: rgba(242,232,213,0.12);
+    --radius: 10px;
+    --font-display: "Fraunces", serif;
+    --font-body: "Inter", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--cream);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--brass);}
+  a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible{
+    outline:2px solid var(--capo-red-bright);
+    outline-offset:3px;
+  }
+
+  h1,h2,h3{font-family:var(--font-display); margin:0 0 .4em; font-weight:600; color:var(--cream);}
+  h1{font-weight:700;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:.72rem;
+    color:var(--brass);
+    display:block;
+    margin-bottom:.6em;
+  }
+
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  section{padding:88px 0;}
+  section + section{border-top:1px solid var(--line);}
+
+  /* NAV */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(28,19,13,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1080px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; flex-wrap:wrap;
+  }
+  .brand{
+    font-family:var(--font-mono); font-weight:600; font-size:.95rem;
+    letter-spacing:.04em; color:var(--cream); text-decoration:none;
+    display:flex; align-items:center; gap:8px;
+  }
+  .brand .dot{width:8px; height:8px; border-radius:50%; background:var(--capo-red-bright); display:inline-block;}
+  nav.links{display:flex; gap:22px; flex-wrap:wrap;}
+  nav.links a{
+    color:var(--cream-dim); text-decoration:none; font-size:.85rem; font-weight:500;
+    border-bottom:1px solid transparent; padding-bottom:2px;
+  }
+  nav.links a:hover{color:var(--cream); border-color:var(--brass);}
+
+  /* HERO */
+  .hero{
+    padding:72px 0 96px;
+    background:
+      radial-gradient(120% 90% at 50% -10%, rgba(138,74,31,0.55), transparent 60%),
+      linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
+    border-top:none;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.1fr 1fr; gap:56px; align-items:center;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .hero h1{font-size:clamp(2.2rem, 4.4vw, 3.4rem); line-height:1.06; letter-spacing:-.01em;}
+  .hero p.lede{font-size:1.08rem; color:var(--cream-dim); max-width:46ch;}
+  .hero-ctas{display:flex; gap:12px; margin-top:28px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-body); font-weight:600; font-size:.9rem;
+    padding:12px 20px; border-radius:999px; border:1px solid transparent;
+    cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--capo-red); color:var(--cream);}
+  .btn-primary:hover{background:var(--capo-red-bright);}
+  .btn-ghost{border-color:var(--line); color:var(--cream);}
+  .btn-ghost:hover{border-color:var(--brass);}
+
+  /* FRETBOARD WIDGET */
+  .fret-widget{
+    background:var(--ink-soft);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px;
+  }
+  .fret-widget .fw-label{
+    font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase;
+    letter-spacing:.1em; color:var(--brass); margin-bottom:14px; display:block;
+  }
+  #fretboardSvg{width:100%; height:auto; display:block;}
+  .fret-buttons{display:flex; gap:6px; margin-top:16px; flex-wrap:wrap;}
+  .fret-buttons button{
+    font-family:var(--font-mono); font-size:.8rem; font-weight:600;
+    width:38px; height:38px; border-radius:8px; border:1px solid var(--line);
+    background:transparent; color:var(--cream-dim); cursor:pointer;
+    transition:all .15s ease;
+  }
+  .fret-buttons button:hover{border-color:var(--brass); color:var(--cream);}
+  .fret-buttons button[aria-pressed="true"]{
+    background:var(--capo-red); border-color:var(--capo-red); color:var(--cream);
+  }
+  .fw-readout{
+    margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);
+    font-family:var(--font-mono); font-size:.85rem; color:var(--cream-dim);
+  }
+  .fw-readout strong{color:var(--brass); display:block; font-size:1.15rem; margin-bottom:2px; font-family:var(--font-body);}
+
+  /* MODULE HEADER */
+  .module-head{display:flex; align-items:baseline; gap:14px; margin-bottom:36px; flex-wrap:wrap;}
+  .module-num{
+    font-family:var(--font-mono); color:var(--capo-red-bright); font-size:1rem; font-weight:600;
+  }
+  .module-head h2{font-size:clamp(1.6rem,3vw,2.2rem);}
+  .module-intro{color:var(--cream-dim); max-width:70ch; margin-bottom:40px;}
+
+  /* CARDS */
+  .card-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px;}
+  @media (max-width:860px){ .card-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:600px){ .card-grid{grid-template-columns:1fr;} }
+  .card{
+    background:var(--ink-soft); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px; transition:border-color .15s ease;
+  }
+  .card:hover{border-color:var(--brass);}
+  .card h3{font-size:1.05rem; margin-bottom:.5em;}
+  .card p{color:var(--cream-dim); font-size:.92rem; margin:0;}
+  .card .tag{
+    font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--brass); display:block; margin-bottom:10px;
+  }
+
+  /* TABLE */
+  table{width:100%; border-collapse:collapse; font-size:.9rem;}
+  caption{text-align:left; font-family:var(--font-mono); font-size:.72rem; color:var(--brass); text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px;}
+  th,td{text-align:left; padding:12px 14px; border-bottom:1px solid var(--line);}
+  th{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; color:var(--cream-dim); font-weight:600;}
+  td{color:var(--cream-dim);}
+  td:first-child, th:first-child{color:var(--cream); font-weight:600;}
+  .table-scroll{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); padding:4px 4px 0;}
+  .table-scroll table{margin-bottom:4px;}
+
+  /* TIMELINE (legit sequence — application steps) */
+  .timeline{list-style:none; margin:0; padding:0; counter-reset:step;}
+  .timeline li{
+    counter-increment:step;
+    position:relative; padding:0 0 32px 52px; border-left:1px solid var(--line);
+    margin-left:18px;
+  }
+  .timeline li:last-child{border-left-color:transparent; padding-bottom:0;}
+  .timeline li::before{
+    content:counter(step);
+    position:absolute; left:-19px; top:0;
+    width:36px; height:36px; border-radius:50%;
+    background:var(--capo-red); color:var(--cream);
+    font-family:var(--font-mono); font-weight:700; font-size:.9rem;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .timeline h3{font-size:1.02rem; margin-bottom:.3em;}
+  .timeline p{color:var(--cream-dim); margin:0; max-width:62ch;}
+
+  /* CALCULATOR */
+  .calc{
+    background:var(--ink-soft); border:1px solid var(--line); border-radius:16px;
+    padding:28px; display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end;
+  }
+  @media (max-width:700px){ .calc{grid-template-columns:1fr;} }
+  .calc-controls{display:flex; gap:18px; flex-wrap:wrap;}
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field label{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; color:var(--brass);}
+  select{
+    background:var(--ink); color:var(--cream); border:1px solid var(--line);
+    border-radius:8px; padding:10px 14px; font-family:var(--font-body); font-size:.95rem;
+    min-width:140px;
+  }
+  .mode-toggle{display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden;}
+  .mode-toggle button{
+    background:transparent; border:none; color:var(--cream-dim); font-family:var(--font-mono);
+    font-size:.72rem; padding:9px 14px; cursor:pointer; text-transform:uppercase; letter-spacing:.05em;
+  }
+  .mode-toggle button[aria-pressed="true"]{background:var(--capo-red); color:var(--cream);}
+  .calc-result{
+    text-align:right;
+  }
+  .calc-result .r-label{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; color:var(--brass); display:block;}
+  .calc-result .r-value{font-family:var(--font-display); font-size:2.4rem; font-weight:700; color:var(--cream);}
+  @media (max-width:700px){ .calc-result{text-align:left;} }
+
+  /* VIDEO GRID */
+  .video-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:22px;}
+  @media (max-width:760px){ .video-grid{grid-template-columns:1fr;} }
+  .video-card{
+    background:var(--ink-soft); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .video-frame{position:relative; width:100%; padding-top:56.25%; background:#000;}
+  .video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+  .video-meta{padding:16px 18px;}
+  .video-meta .lvl{
+    font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--brass); display:block; margin-bottom:6px;
+  }
+  .video-meta h3{font-size:.98rem; margin-bottom:.35em;}
+  .video-meta p{color:var(--cream-dim); font-size:.85rem; margin:0;}
+  .yt-fallback{
+    display:inline-block; margin-top:12px; font-family:var(--font-mono); font-size:.72rem;
+    text-transform:uppercase; letter-spacing:.06em; color:var(--brass); text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .yt-fallback:hover{color:var(--capo-red-bright); border-color:var(--capo-red-bright);}
+
+  /* SONG CASE STUDIES */
+  .song-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  @media (max-width:760px){ .song-grid{grid-template-columns:1fr;} }
+  .song-card{
+    border:1px solid var(--line); border-radius:var(--radius); padding:22px;
+    background:linear-gradient(180deg, var(--ink-soft), var(--ink));
+  }
+  .song-card .fret-tag{
+    display:inline-block; font-family:var(--font-mono); font-size:.72rem; font-weight:700;
+    color:var(--ink); background:var(--brass); padding:4px 10px; border-radius:999px; margin-bottom:10px;
+  }
+  .song-card h3{font-size:1.05rem;}
+  .song-card .artist{color:var(--brass); font-size:.82rem; display:block; margin-bottom:10px; font-family:var(--font-mono);}
+  .song-card p{color:var(--cream-dim); font-size:.9rem; margin:0;}
+
+  /* TAKEAWAYS */
+  .takeaways{list-style:none; margin:0; padding:0; display:grid; gap:16px;}
+  .takeaways li{
+    display:flex; gap:14px; align-items:flex-start;
+    padding:18px 20px; border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--ink-soft);
+  }
+  .takeaways li::before{
+    content:"♪"; color:var(--capo-red-bright); font-size:1.2rem; line-height:1.4; flex-shrink:0;
+  }
+  .takeaways p{margin:0; color:var(--cream-dim);}
+  .takeaways strong{color:var(--cream);}
+
+  footer{
+    padding:48px 0; text-align:center; color:var(--cream-dim); font-size:.82rem;
+    border-top:1px solid var(--line);
+  }
+  footer a{color:var(--brass);}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><span class="dot"></span>CAPO SCHOOL</a>
+    <nav class="links">
+      <a href="#module-1">What It Does</a>
+      <a href="#module-2">Gear</a>
+      <a href="#module-3">Choose a Capo</a>
+      <a href="#module-4">Apply It</a>
+      <a href="#module-5">Theory</a>
+      <a href="#videos">Videos</a>
+      <a href="#songs">Songs</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Free interactive lesson · Beginner guitar</span>
+        <h1>The capo turns your five open chords into every key you'll ever need.</h1>
+        <p class="lede">Learn what a capo actually does to your strings, how to pick and apply one without buzz or tuning drift, and how to transpose songs by ear — with a live fretboard you can try right now.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#module-1">Start Lesson 1 →</a>
+          <a class="btn btn-ghost" href="#calculator">Try the transposer</a>
+        </div>
+      </div>
+
+      <div class="fret-widget">
+        <span class="fw-label">Live demo — move the capo</span>
+        <svg id="fretboardSvg" viewBox="0 0 460 200" role="img" aria-label="Guitar fretboard diagram with a movable capo">
+          <!-- neck -->
+          <rect x="20" y="20" width="420" height="160" fill="#2a1c12" rx="4"/>
+          <!-- frets -->
+          <g stroke="#8a7a5f" stroke-width="2">
+            <line x1="20" y1="20" x2="20" y2="180"/>
+            <line x1="90" y1="20" x2="90" y2="180"/>
+            <line x1="160" y1="20" x2="160" y2="180"/>
+            <line x1="230" y1="20" x2="230" y2="180"/>
+            <line x1="300" y1="20" x2="300" y2="180"/>
+            <line x1="370" y1="20" x2="370" y2="180"/>
+            <line x1="440" y1="20" x2="440" y2="180"/>
+          </g>
+          <!-- fret number labels -->
+          <g fill="#8a7a5f" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">
+            <text x="55" y="196">1</text>
+            <text x="125" y="196">2</text>
+            <text x="195" y="196">3</text>
+            <text x="265" y="196">4</text>
+            <text x="335" y="196">5</text>
+            <text x="405" y="196">6</text>
+          </g>
+          <!-- strings -->
+          <g stroke="#d9cba9" stroke-width="1.4" opacity="0.85">
+            <line x1="20" y1="34" x2="440" y2="34"/>
+            <line x1="20" y1="60" x2="440" y2="60"/>
+            <line x1="20" y1="86" x2="440" y2="86"/>
+            <line x1="20" y1="112" x2="440" y2="112"/>
+            <line x1="20" y1="138" x2="440" y2="138"/>
+            <line x1="20" y1="164" x2="440" y2="164"/>
+          </g>
+          <!-- capo bar, position controlled by JS -->
+          <rect id="capoBar" x="8" y="14" width="14" height="172" rx="6" fill="#c1442e" stroke="#e05a3f" stroke-width="1.5"/>
+        </svg>
+
+        <div class="fret-buttons" role="group" aria-label="Choose capo fret">
+          <button type="button" data-fret="0" aria-pressed="true">0</button>
+          <button type="button" data-fret="1" aria-pressed="false">1</button>
+          <button type="button" data-fret="2" aria-pressed="false">2</button>
+          <button type="button" data-fret="3" aria-pressed="false">3</button>
+          <button type="button" data-fret="4" aria-pressed="false">4</button>
+          <button type="button" data-fret="5" aria-pressed="false">5</button>
+        </div>
+
+        <div class="fw-readout">
+          <strong id="tuningName">Standard E Tuning</strong>
+          <span id="tuningSub">No capo — open strings sound as normal.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 1 -->
+  <section id="module-1">
+    <div class="wrap">
+      <div class="module-head"><span class="module-num">01</span><h2>What a capo actually does</h2></div>
+      <p class="module-intro">The capo — from the Italian <em>capotasto</em>, "head-tie" — clamps across the neck and acts as a temporary, movable nut. It shortens the vibrating length of every string, raising their open pitch in half-step (semitone) steps.</p>
+      <div class="card-grid">
+        <div class="card">
+          <span class="tag">Mechanism</span>
+          <h3>New zero fret</h3>
+          <p>Everything behind the capo is muted. The clamped fret becomes the new starting point for all six strings.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Not just training wheels</span>
+          <h3>A real performance tool</h3>
+          <p>Professional players use capos to shift keys instantly, change acoustic tone, and unlock chord voicings that aren't possible open.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Beginner payoff</span>
+          <h3>Skip the barre chords</h3>
+          <p>Because the capo shifts pitch for you, you can play songs in hard keys using only the easy open shapes you already know.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 2 -->
+  <section id="module-2">
+    <div class="wrap">
+      <div class="module-head"><span class="module-num">02</span><h2>Gear to have before you start</h2></div>
+      <p class="module-intro">A capo only works well when it's paired with the right supporting gear — and when your fretting hand already knows its open chords.</p>
+      <div class="table-scroll">
+        <table>
+          <caption>Beginner capo toolkit</caption>
+          <thead>
+            <tr><th>Item</th><th>Function</th><th>Key parameter</th><th>Why it matters</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Adjustable capo</td><td>Clamps strings to shorten scale length</td><td>Even tension across all strings</td><td>Removes the need for difficult fingerings early on</td></tr>
+            <tr><td>Chromatic tuner</td><td>Detects and corrects pitch</td><td>Cent-level accuracy</td><td>Capos compress strings and can pull them sharp</td></tr>
+            <tr><td>Thin pick (~0.38mm)</td><td>Reduces drag when strumming</td><td>High flexibility, fast recovery</td><td>Prevents a harsh attack on tight, capoed strings</td></tr>
+            <tr><td>Open chord lexicon</td><td>The shapes you'll transpose with the capo</td><td>Clean changes at 60 bpm</td><td>The capo only shifts shapes you already know</td></tr>
+            <tr><td>Transposition chart</td><td>Maps shapes to real sounding chords</td><td>Clear, quick-reference layout</td><td>Removes theory guesswork mid-song</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 3 -->
+  <section id="module-3">
+    <div class="wrap">
+      <div class="module-head"><span class="module-num">03</span><h2>Choosing a capo for your guitar</h2></div>
+      <p class="module-intro">Capos differ in how they clamp and how curved their pad is — and both need to match your guitar.</p>
+
+      <div class="card-grid" style="margin-bottom:40px;">
+        <div class="card"><span class="tag">Fast</span><h3>Trigger / spring-loaded</h3><p>One-handed and quick — great live. Fixed tension can pull light strings sharp.</p></div>
+        <div class="card"><span class="tag">Precise</span><h3>Screw-fit</h3><p>A dial sets exact pressure. Slower to apply, but easiest on tuning and frets.</p></div>
+        <div class="card"><span class="tag">Cheap</span><h3>Strap / toggle</h3><p>Light and inexpensive, but wears out fast and can clamp unevenly.</p></div>
+        <div class="card"><span class="tag">Premium</span><h3>Cradle / yoke</h3><p>Wraps the whole neck for very even pressure; parks behind the nut when idle.</p></div>
+        <div class="card"><span class="tag">Specialty</span><h3>Partial capo</h3><p>Clamps only 3–5 strings to fake an open tuning like DADGAD.</p></div>
+        <div class="card"><span class="tag">Emergency only</span><h3>Pencil + rubber band</h3><p>Illustrates the concept — not a long-term solution.</p></div>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <caption>Match the pad to your fretboard radius</caption>
+          <thead><tr><th>Guitar family</th><th>Radius</th><th>Ideal pad</th><th>Watch out for</th></tr></thead>
+          <tbody>
+            <tr><td>Classical (nylon)</td><td>Flat</td><td>Flat rubber pad</td><td>A curved capo over-squeezes the middle strings</td></tr>
+            <tr><td>Vintage electric</td><td>Deep curve (7.25")</td><td>Deeply curved pad</td><td>High-tension springs pull light strings sharp</td></tr>
+            <tr><td>Modern acoustic / electric</td><td>Moderate curve (9.5"–12")</td><td>Radiused / adaptive pad</td><td>Mismatched curve buzzes on the outer strings</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 4 -->
+  <section id="module-4">
+    <div class="wrap">
+      <div class="module-head"><span class="module-num">04</span><h2>Applying the capo, step by step</h2></div>
+      <p class="module-intro">This is the one sequence in the lesson where order really matters — follow it in order every time you clamp on.</p>
+      <ol class="timeline">
+        <li><h3>Pre-tune the guitar</h3><p>Tune to pitch with a chromatic tuner before the capo ever touches the neck. This gives you a stable baseline.</p></li>
+        <li><h3>Open the capo fully</h3><p>Loosen the screw or squeeze the trigger all the way. Hold it parallel to the fret wire.</p></li>
+        <li><h3>Position it behind the fret</h3><p>Sit the pad 5–10mm behind the target fret wire, on the body side — never on top of the metal.</p></li>
+        <li><h3>Clamp straight down</h3><p>No sideways drag. Dragging stretches strings and ruins intonation.</p></li>
+        <li><h3>Set the tension</h3><p>Tighten only until the buzz disappears. Overtightening pulls strings sharp and wears your frets.</p></li>
+        <li><h3>Re-tune</h3><p>Check the tuner again once the capo is clamped and make any small corrections.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- MODULE 5 -->
+  <section id="module-5">
+    <div class="wrap">
+      <div class="module-head"><span class="module-num">05</span><h2>Transposition theory</h2></div>
+      <p class="module-intro">Every fret you move the capo up raises your open shapes by one half-step. Use that in either direction: to raise a song's key, or to keep the original key while swapping to easier shapes.</p>
+
+      <div id="calculator" class="calc">
+        <div class="calc-controls">
+          <div class="field">
+            <label for="modeToggle">Direction</label>
+            <div class="mode-toggle" id="modeToggle">
+              <button type="button" data-mode="forward" aria-pressed="true">Shape → Sound</button>
+              <button type="button" data-mode="reverse" aria-pressed="false">Sound → Shape</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="chordSelect" id="chordSelectLabel">Shape you play</label>
+            <select id="chordSelect"></select>
+          </div>
+          <div class="field">
+            <label for="capoSelect">Capo fret</label>
+            <select id="capoSelect"></select>
+          </div>
+        </div>
+        <div class="calc-result">
+          <span class="r-label" id="resultLabel">Sounds like</span>
+          <span class="r-value" id="resultValue">C</span>
+        </div>
+      </div>
+
+      <p style="color:var(--cream-dim); font-size:.85rem; margin-top:14px;">Example from the lesson: song in the key of C, capo on fret 5 (+5 semitones) → shapes move down 5 semitones. Absolute C is played as a G shape, Dm7 as Am7, G7 as D7, and G/B as D/F#.</p>
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section id="videos">
+    <div class="wrap">
+      <div class="module-head"><span class="module-num">↳</span><h2>Worship songs, played with a capo</h2></div>
+      <p class="module-intro">Five well-known worship songs, each taught with a capo, at a different fret. Watch how the same open shapes from Module 2 get reused song after song — only the capo position changes.</p>
+      <div class="video-grid">
+
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/vCFZlEAHqD0" title="How To Play: What A Beautiful Name — with Capo on Fret 2" loading="lazy" allowfullscreen></iframe></div>
+          <div class="video-meta">
+            <span class="lvl">Capo Fret 2 · Hillsong Worship</span>
+            <h3>What A Beautiful Name</h3>
+            <p>A dedicated capo lesson that teaches the mechanics of capo placement using this song as the example — the clearest bridge from Module 4 into a real worship set.</p>
+            <a class="yt-fallback" href="https://www.youtube.com/watch?v=vCFZlEAHqD0" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/kJfgcpAdtzM" title="Good Good Father — EASY Guitar Tutorial" loading="lazy" allowfullscreen></iframe></div>
+          <div class="video-meta">
+            <span class="lvl">Capo Fret 2 · Chris Tomlin / Housefires</span>
+            <h3>Good Good Father</h3>
+            <p>Recorded in the key of A, but commonly taught with a capo on fret 2 using key-of-G shapes — a direct example of "same key, easier shapes" from Module 5.</p>
+            <a class="yt-fallback" href="https://www.youtube.com/watch?v=kJfgcpAdtzM" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/msve1byCJko" title="Build My Life — Tutorial (acoustic guitar)" loading="lazy" allowfullscreen></iframe></div>
+          <div class="video-meta">
+            <span class="lvl">Capo Fret 3 · Passion / Housefires</span>
+            <h3>Build My Life</h3>
+            <p>Originally in a higher, male-led key; this tutorial moves it down to easier key-of-D shapes with a capo on fret 3 to make it comfortable to sing and play.</p>
+            <a class="yt-fallback" href="https://www.youtube.com/watch?v=msve1byCJko" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/AFpa2330FI0" title="Way Maker — Guitar Tutorial (with capo)" loading="lazy" allowfullscreen></iframe></div>
+          <div class="video-meta">
+            <span class="lvl">Capo Fret 4 · Leeland</span>
+            <h3>Way Maker</h3>
+            <p>Recorded in the key of E; this tutorial capos at fret 4 so the guitarist can play it with familiar open shapes instead of barre chords.</p>
+            <a class="yt-fallback" href="https://www.youtube.com/watch?v=AFpa2330FI0" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/DzPUMuTUoBQ" title="Worthy — Guitar Tutorial (with capo)" loading="lazy" allowfullscreen></iframe></div>
+          <div class="video-meta">
+            <span class="lvl">Worship set staple · Elevation Worship</span>
+            <h3>Worthy</h3>
+            <p>A modern worship anthem taught with a capo so a beginner leading a set can stay in open chords throughout.</p>
+            <a class="yt-fallback" href="https://www.youtube.com/watch?v=DzPUMuTUoBQ" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
+        </div>
+
+      </div>
+      <p style="color:var(--cream-dim); font-size:.85rem; margin-top:6px;">Try it yourself: plug each song's capo fret into the transposer in Module 5 to see exactly which open shapes match its original key.</p>
+    </div>
+  </section>
+
+  <!-- SONGS -->
+  <section id="songs">
+    <div class="wrap">
+      <div class="module-head"><span class="module-num">↳</span><h2>Song case studies</h2></div>
+      <p class="module-intro">Four real songs that use a capo to trade hard barre chords for easy open ones.</p>
+      <div class="song-grid">
+        <div class="song-card">
+          <span class="fret-tag">Capo Fret 6</span>
+          <span class="artist">Simon &amp; Garfunkel</span>
+          <h3>The Sound of Silence</h3>
+          <p>Shapes: Am, C, D, Em. Lets the guitarist play the famous open-string intro riff instead of relying on barre chords.</p>
+        </div>
+        <div class="song-card">
+          <span class="fret-tag">Capo Fret 2</span>
+          <span class="artist">The Clash</span>
+          <h3>Guns of Brixton</h3>
+          <p>Trades constant barre chords in the original key for simple, open shapes that are far easier on a beginner's hand.</p>
+        </div>
+        <div class="song-card">
+          <span class="fret-tag">Capo Fret 2</span>
+          <span class="artist">Maroon 5 / The Rolling Stones</span>
+          <h3>Moves Like Jagger / Miss You</h3>
+          <p>A groove-driven two-chord song transposed to easy open shapes, removing the need for a barre chord entirely.</p>
+        </div>
+        <div class="song-card">
+          <span class="fret-tag">Capo Fret 3</span>
+          <span class="artist">Tears for Fears</span>
+          <h3>Shout</h3>
+          <p>Avoids the flat-key barre chords the original key demands — one open shape here is even easier than its standard equivalent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAKEAWAYS -->
+  <section id="takeaways">
+    <div class="wrap">
+      <div class="module-head"><span class="module-num">↳</span><h2>Before you go</h2></div>
+      <ul class="takeaways">
+        <li><p><strong>Buy quality gear.</strong> Skip uneven elastic straps or non-adjustable springs — a screw-fit or precision trigger capo will hold its tension properly.</p></li>
+        <li><p><strong>Tune before and after.</strong> Every time. Capos shift pitch slightly as they clamp.</p></li>
+        <li><p><strong>Don't let the capo replace barre chords forever.</strong> Keep building that strength alongside your capo playing.</p></li>
+        <li><p><strong>Experiment.</strong> Try different capo positions with other musicians for layered arrangements, or move it high up the neck for a bright, mandolin-like tone.</p></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    Built for beginner guitarists · Video lessons embedded from their original YouTube channels — all rights belong to their respective creators.
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---- Hero fretboard widget ----
+  var tunings = {
+    0: {name:"Standard E Tuning", sub:"No capo — open strings sound as normal."},
+    1: {name:"F Standard Tuning", sub:"Capo 1 — open shapes now sound one half-step higher."},
+    2: {name:"F# Standard Tuning", sub:"Capo 2 — open shapes now sound two half-steps higher."},
+    3: {name:"G Standard Tuning", sub:"Capo 3 — open shapes now sound three half-steps higher."},
+    4: {name:"G# Standard Tuning", sub:"Capo 4 — open shapes now sound four half-steps higher."},
+    5: {name:"A Standard Tuning", sub:"Capo 5 — open shapes now sound five half-steps higher."}
+  };
+  var fretX = {0:15, 1:55, 2:125, 3:195, 4:265, 5:335, 6: 405}; // capo sits just left of the target fret's leftmost line, offset for 0
+  var capoBar = document.getElementById('capoBar');
+  var tuningName = document.getElementById('tuningName');
+  var tuningSub = document.getElementById('tuningSub');
+  var fretButtons = document.querySelectorAll('.fret-buttons button');
+
+  function setFret(f){
+    fretButtons.forEach(function(b){
+      b.setAttribute('aria-pressed', b.dataset.fret === String(f) ? 'true' : 'false');
+    });
+    var x = f === 0 ? 8 : (20 + (f-1)*70 + 25);
+    capoBar.setAttribute('x', x);
+    tuningName.textContent = tunings[f].name;
+    tuningSub.textContent = tunings[f].sub;
+  }
+  fretButtons.forEach(function(b){
+    b.addEventListener('click', function(){ setFret(parseInt(b.dataset.fret,10)); });
+  });
+  setFret(0);
+
+  // ---- Transposition calculator ----
+  var chromatic = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+  var chords = ["C","D","E","G","A","Am","Em","Dm","D7","G7","C7","Am7"];
+
+  function rootAndQuality(chordName){
+    var m = chordName.match(/^([A-G]#?)(.*)$/);
+    return {root:m[1], quality:m[2]};
+  }
+  function transposeChord(chordName, semitones){
+    var parts = rootAndQuality(chordName);
+    var idx = chromatic.indexOf(parts.root);
+    var newIdx = ((idx + semitones) % 12 + 12) % 12;
+    return chromatic[newIdx] + parts.quality;
+  }
+
+  var chordSelect = document.getElementById('chordSelect');
+  var capoSelect = document.getElementById('capoSelect');
+  var resultValue = document.getElementById('resultValue');
+  var resultLabel = document.getElementById('resultLabel');
+  var chordSelectLabel = document.getElementById('chordSelectLabel');
+  var modeButtons = document.querySelectorAll('#modeToggle button');
+  var mode = 'forward';
+
+  chords.forEach(function(c){
+    var opt = document.createElement('option');
+    opt.value = c; opt.textContent = c;
+    chordSelect.appendChild(opt);
+  });
+  for(var i=0;i<=7;i++){
+    var opt2 = document.createElement('option');
+    opt2.value = i; opt2.textContent = "Fret " + i + (i===0 ? " (none)" : "");
+    capoSelect.appendChild(opt2);
+  }
+  capoSelect.value = "2";
+
+  function render(){
+    var chord = chordSelect.value;
+    var fret = parseInt(capoSelect.value, 10);
+    if(mode === 'forward'){
+      chordSelectLabel.textContent = "Shape you play";
+      resultLabel.textContent = "Sounds like";
+      resultValue.textContent = transposeChord(chord, fret);
+    } else {
+      chordSelectLabel.textContent = "Chord you want to sound";
+      resultLabel.textContent = "Play this shape";
+      resultValue.textContent = transposeChord(chord, -fret);
+    }
+  }
+  chordSelect.addEventListener('change', render);
+  capoSelect.addEventListener('change', render);
+  modeButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      modeButtons.forEach(function(b){ b.setAttribute('aria-pressed','false'); });
+      btn.setAttribute('aria-pressed','true');
+      mode = btn.dataset.mode;
+      render();
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>
