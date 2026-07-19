@@ -269,9 +269,10 @@
   .song-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
   @media (max-width:760px){ .song-grid{grid-template-columns:1fr;} }
   .song-card{
-    border:1px solid var(--line); border-radius:var(--radius); padding:22px;
+    border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
     background:linear-gradient(180deg, var(--ink-soft), var(--ink));
   }
+  .song-card .song-body{padding:22px;}
   .song-card .fret-tag{
     display:inline-block; font-family:var(--font-mono); font-size:.72rem; font-weight:700;
     color:var(--ink); background:var(--brass); padding:4px 10px; border-radius:999px; margin-bottom:10px;
@@ -578,33 +579,54 @@
   <!-- SONGS -->
   <section id="songs">
     <div class="wrap">
-      <div class="module-head"><span class="module-num">↳</span><h2>Song case studies</h2></div>
-      <p class="module-intro">Four real songs that use a capo to trade hard barre chords for easy open ones.</p>
+      <div class="module-head"><span class="module-num">↳</span><h2>More worship songs, played with a capo</h2></div>
+      <p class="module-intro">Four more worship staples that trade hard barre chords for easy open ones — each with its own tutorial to watch and try.</p>
       <div class="song-grid">
+
         <div class="song-card">
-          <span class="fret-tag">Capo Fret 6</span>
-          <span class="artist">Simon &amp; Garfunkel</span>
-          <h3>The Sound of Silence</h3>
-          <p>Shapes: Am, C, D, Em. Lets the guitarist play the famous open-string intro riff instead of relying on barre chords.</p>
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/GrgpHRzz6X8" title="Reckless Love — Tutorial (acoustic guitar)" loading="lazy" allowfullscreen></iframe></div>
+          <div class="song-body">
+            <span class="fret-tag">Capo Fret 2</span>
+            <span class="artist">Cory Asbury / Bethel Music</span>
+            <h3>Reckless Love</h3>
+            <p>Recorded in a high key for most voices; capoing at fret 2 lets you play in key-of-D shapes while still sounding in E.</p>
+            <a class="yt-fallback" href="https://www.youtube.com/watch?v=GrgpHRzz6X8" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
         </div>
+
         <div class="song-card">
-          <span class="fret-tag">Capo Fret 2</span>
-          <span class="artist">The Clash</span>
-          <h3>Guns of Brixton</h3>
-          <p>Trades constant barre chords in the original key for simple, open shapes that are far easier on a beginner's hand.</p>
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/CyPZkaW4G9c" title="Goodness Of God — Guitar Tutorial (with capo)" loading="lazy" allowfullscreen></iframe></div>
+          <div class="song-body">
+            <span class="fret-tag">Capo Fret 1</span>
+            <span class="artist">Bethel Music</span>
+            <h3>Goodness Of God</h3>
+            <p>A capo on fret 1 with key-of-G shapes gets you right into the original key without a single barre chord.</p>
+            <a class="yt-fallback" href="https://www.youtube.com/watch?v=CyPZkaW4G9c" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
         </div>
+
         <div class="song-card">
-          <span class="fret-tag">Capo Fret 2</span>
-          <span class="artist">Maroon 5 / The Rolling Stones</span>
-          <h3>Moves Like Jagger / Miss You</h3>
-          <p>A groove-driven two-chord song transposed to easy open shapes, removing the need for a barre chord entirely.</p>
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/sBvsiXMCBik" title="Living Hope — Guitar Tutorial (with capo)" loading="lazy" allowfullscreen></iframe></div>
+          <div class="song-body">
+            <span class="fret-tag">Capo Fret 1</span>
+            <span class="artist">Phil Wickham</span>
+            <h3>Living Hope</h3>
+            <p>Played here in key-of-D shapes with a capo on fret 1 — familiar open chords instead of chasing the original key up the neck.</p>
+            <a class="yt-fallback" href="https://www.youtube.com/watch?v=sBvsiXMCBik" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
         </div>
+
         <div class="song-card">
-          <span class="fret-tag">Capo Fret 3</span>
-          <span class="artist">Tears for Fears</span>
-          <h3>Shout</h3>
-          <p>Avoids the flat-key barre chords the original key demands — one open shape here is even easier than its standard equivalent.</p>
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/HKhVwjYoUyI" title="O Come To The Altar — Guitar Tutorial (with capo)" loading="lazy" allowfullscreen></iframe></div>
+          <div class="song-body">
+            <span class="fret-tag">Capo Fret 2</span>
+            <span class="artist">Elevation Worship</span>
+            <h3>O Come To The Altar</h3>
+            <p>The album key is high for most male voices; capo 2 with key-of-G shapes brings it down to a comfortable, singable range.</p>
+            <a class="yt-fallback" href="https://www.youtube.com/watch?v=HKhVwjYoUyI" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
