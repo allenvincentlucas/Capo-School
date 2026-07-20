@@ -2,9 +2,8 @@
 
 A free, single-page interactive lesson that teaches beginner guitarists how to choose, apply, and use a capo — built as a static site with no build step, ready to deploy on GitHub Pages.
 
-**[View the live site →](#https://allenvincentlucas.github.io/Capo-School/)** *(update this link once GitHub Pages is enabled — see below)*
-
-![Capo School screenshot placeholder](assets/img/social-preview.png)
+**[View the live site →](#https://allenvincentlucas.github.io/Capo-School/)**
+[🎸 View Capo School live](https://allenvincentlucas.github.io/Capo-School/)
 
 ## What's inside
 
